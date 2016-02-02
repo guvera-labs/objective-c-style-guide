@@ -58,14 +58,13 @@ UIApplication.sharedApplication.delegate;
 ## Spacing
 
 * Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) open on the same line. Any additional else statements should be on the same line as the previous closing brace. Ensure there is a space between the parenthesis and the openning brace. We also like to see a space between the closing brace and additional else statements. 
 
 **For example:**
 ```objc
 if (user.isHappy) {
     // Do something
-}
-else {
+} else {
     // Do something else
 }
 ```
@@ -313,47 +312,11 @@ NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
 NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 ```
 
-## `CGRect` Functions
-
-When accessing the `x`, `y`, `width`, or `height` of a `CGRect`, always use the [`CGGeometry` functions](http://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html) instead of direct struct member access. From Apple's `CGGeometry` reference:
-
-> All functions described in this reference that take CGRect data structures as inputs implicitly standardize those rectangles before calculating their results. For this reason, your applications should avoid directly reading and writing the data stored in the CGRect data structure. Instead, use the functions described here to manipulate rectangles and to retrieve their characteristics.
-
-**For example:**
-
-```objc
-CGRect frame = self.view.frame;
-
-CGFloat x = CGRectGetMinX(frame);
-CGFloat y = CGRectGetMinY(frame);
-CGFloat width = CGRectGetWidth(frame);
-CGFloat height = CGRectGetHeight(frame);
-```
-
-**Not:**
-
-```objc
-CGRect frame = self.view.frame;
-
-CGFloat x = frame.origin.x;
-CGFloat y = frame.origin.y;
-CGFloat width = frame.size.width;
-CGFloat height = frame.size.height;
-```
-
 ## Constants
 
-Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. Constants should be declared as `static` constants and not `#define`s unless explicitly being used as a macro.
+Constants are preferred over in-line string literals or numbers, as they allow for easy reproduction of commonly used variables and can be quickly changed without the need for find and replace. 
 
 **For example:**
-
-```objc
-static NSString * const NYTAboutViewControllerCompanyName = @"The New York Times Company";
-
-static const CGFloat NYTImageThumbnailHeight = 50.0;
-```
-
-**Not:**
 
 ```objc
 #define CompanyName @"The New York Times Company"
@@ -509,19 +472,4 @@ This helps disambiguate in cases when an object is the delegate for multiple sim
 
 ## Xcode project
 
-The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
-
 When possible, always turn on “Treat Warnings as Errors” in the target’s Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang’s pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
-
-# Other Objective-C Style Guides
-
-If ours doesn’t fit your tastes, have a look at some other style guides:
-
-* [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
-* [GitHub](https://github.com/github/objective-c-style-guide)
-* [Adium](https://trac.adium.im/wiki/CodingStyle)
-* [Sam Soffes](https://gist.github.com/soffes/812796)
-* [CocoaDevCentral](http://cocoadevcentral.com/articles/000082.php)
-* [Luke Redpath](http://lukeredpath.co.uk/blog/2011/06/28/my-objective-c-style-guide/)
-* [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
-* [Wikimedia](https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/iOS/ObjectiveCStyleGuide)
