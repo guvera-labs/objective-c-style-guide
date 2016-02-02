@@ -60,7 +60,7 @@ UIApplication.sharedApplication.delegate;
 * Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) open on the same line.
 * Any additional else statements should be on the same line as the previous closing brace.
-* Ensure there is a space between the parenthesis and the openning brace. We also like to see a space between the closing brace and additional else statements. 
+* Ensure there is a space between the parenthesis and the opening brace. We also like to see a space between the closing brace and additional else statements. 
 
 **For example:**
 ```objc
@@ -141,6 +141,15 @@ In method signatures, there should be a space after the scope (`-` or `+` symbol
 **For example:**
 ```objc
 - (void)setExampleText:(NSString *)text image:(UIImage *)image;
+```
+
+In the implementation, ensure opening braces are on the same line with a space before them.
+
+**For example:**
+```objc
+- (void)setExampleText:(NSString *)text image:(UIImage *)image {
+   // implementation
+}
 ```
 
 ## Variables
